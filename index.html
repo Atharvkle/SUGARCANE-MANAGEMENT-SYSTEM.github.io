@@ -120,7 +120,1016 @@
         <strong>Vaishali P Ma'am</strong>, the course instructor for Design and Analysis of Algorithms.
     </p>
 </section>
+<section id="code">
+    <h2>Code</h2>
+    <p>
+      #include <bits/stdc++.h>
+#include <conio.h>
+using namespace std;
 
+double currentcost=1000;
+
+class driverpass
+{
+public:
+    string dname;
+    string dpass;
+
+    void write_to_filedpass(ofstream &outfile);
+    void read_from_filedpass(ifstream &infile);
+};
+
+void driverpass::write_to_filedpass(ofstream &outfile)
+{
+    outfile << dname << endl;
+    outfile << dpass << endl;
+}
+
+void driverpass::read_from_filedpass(ifstream &infile)
+{
+    getline(infile, dname);
+    getline(infile, dpass);
+}
+
+
+class factoryrequest
+{
+    public:
+        int fid;
+        string factname;
+        string farmername;
+        int weight;
+        string status;
+        double cost;
+
+        void write_to_filer(ofstream &outfile);
+        void read_from_filer(ifstream &infile);
+};
+
+void factoryrequest::write_to_filer(ofstream &outfile)
+{
+    outfile << fid << endl;
+    outfile << factname << endl;
+    outfile << farmername << endl;
+    outfile << weight << endl;
+    outfile << status << endl;
+    outfile << cost << endl;
+}
+
+void factoryrequest::read_from_filer(ifstream &infile)
+{
+    infile>> fid;
+    getline(infile, factname);
+    getline(infile, farmername);
+    infile>>weight;
+    getline(infile, status);
+    infile>>cost;
+}
+
+class truckreq
+{
+public:
+    int tid;
+    string farmername;
+    string src;
+    string dest;
+    double distance;
+    string status;
+
+    void write_to_filetru(ofstream &outfile);
+    void read_from_filetru(ifstream &infile);
+};
+
+void truckreq::write_to_filetru(ofstream &outfile)
+{
+    outfile << tid << endl;
+    outfile << farmername << endl;
+    outfile << src << endl;
+    outfile << dest << endl;
+    outfile << distance << endl;
+    outfile << status << endl;
+}
+
+void truckreq::read_from_filetru(ifstream &infile)
+{
+    infile >> tid;
+    getline(infile, farmername);
+    getline(infile, src);
+    getline(infile, dest);
+    infile >> distance;
+    infile.ignore();
+    getline(infile, status);
+}
+
+class trucks
+{
+public:
+    int truckid;
+    string driver;
+    string truckno;
+    int load;
+    string tcontact;
+    string status;
+    int factiid;
+
+    void write_to_filet(ofstream &outfile);
+    void read_from_filet(ifstream &infile);
+};
+
+
+void trucks::write_to_filet(ofstream &outfile)
+{
+    outfile << truckid << endl;
+    outfile << driver << endl;
+    outfile << truckno << endl;
+    outfile << load << endl;
+    outfile << tcontact << endl;
+    outfile << status << endl;
+    outfile << factiid << endl;
+
+}
+
+void trucks::read_from_filet(ifstream &infile)
+{
+    infile>>truckid;
+    infile.ignore();
+    getline(infile, driver);
+
+    getline(infile, truckno);
+
+    infile>>load;
+    infile.ignore();
+    getline(infile, tcontact);
+
+    getline(infile, status);
+
+    infile>>factiid;
+    infile.ignore();
+}
+
+
+class factory
+{
+public:
+    int factid;
+    string factname;
+    string taluka;
+    string address;
+    string contact;
+
+    void write_to_filef(ofstream &outfile);
+    void read_from_filef(ifstream &infile);
+};
+
+void factory::write_to_filef(ofstream &outfile)
+{
+    outfile << factid << endl;
+    outfile << factname << endl;
+    outfile << taluka << endl;
+    outfile << address << endl;
+    outfile << contact << endl;
+}
+
+void factory::read_from_filef(ifstream &infile)
+{
+    infile>>factid;
+    infile.ignore();
+    getline(infile, factname);
+    getline(infile, taluka);
+    getline(infile, address);
+    getline(infile, contact);
+}
+
+
+class farm
+{
+public:
+    string fname;
+    string fpass;
+
+    void write_to_filex(ofstream &outfile);
+    void read_from_filex(ifstream &infile);
+};
+
+void farm::write_to_filex(ofstream &outfile)
+{
+    outfile << fname << endl;
+    outfile << fpass << endl;
+}
+
+void farm::read_from_filex(ifstream &infile)
+{
+    getline(infile, fname);
+    getline(infile, fpass);
+}
+
+class dist
+{
+public:
+    int dis[100];
+
+    void write_to_filed(ofstream &outfile);
+    void read_from_filed(ifstream &infile);
+};
+
+void dist::write_to_filed(ofstream &outfile)
+{
+    for (int i=1;i<=26;i++)
+    {
+        outfile << dis[i];
+    }
+    outfile << endl;
+}
+
+void dist::read_from_filed(ifstream &infile)
+{
+    for (int i=1;i<=26;i++)
+    {
+        infile >> dis[i];
+        infile.ignore();
+    }
+}
+
+
+
+class village
+{
+public:
+    int villid;
+    string villname;
+
+    void write_to_filev(ofstream &outfile);
+    void read_from_filev(ifstream &infile);
+};
+
+void village::write_to_filev(ofstream &outfile)
+{
+    outfile << villid << endl;
+    outfile << villname << endl;
+}
+
+void village::read_from_filev(ifstream &infile)
+{
+    infile >> villid;
+    infile.ignore();
+    getline(infile, villname);
+}
+
+
+
+void welcome(string x)
+{
+    for (int i = 0; i < 100; i++)
+    {
+        cout << "_";
+    }
+    cout<<endl<<endl;
+    for (int i = 0; i < 100; i++)
+    {
+        cout << "*";
+    }
+    cout << "\n\n\t\t\t\t\t\tWELCOME\n\n";
+    cout << "\t\t\t\t\t\t"<<x<<"\n\n";
+    cout << "\t\t\t\t ENJOY YOUR JOURNEY WITH OUR PROGRAM!\n\n";
+    for (int i = 0; i < 100; i++)
+    {
+        cout << "*";
+    }
+    cout<<endl;
+    for (int i = 0; i < 100; i++)
+    {
+        cout << "_";
+    }
+    cout << "\n\n";
+}
+
+
+void logintheme()
+{
+    for (int i = 0; i < 100; i++)
+    {
+        cout << "_";
+    }
+    cout<<endl<<endl;
+    for (int i = 0; i < 100; i++)
+    {
+        cout << "*";
+    }
+    cout << "\n\n\t\t\t\t\t\tPLEASE LOGIN\n\n";
+    for (int i = 0; i < 100; i++)
+    {
+        cout << "*";
+    }
+    cout<<endl;
+    for (int i = 0; i < 100; i++)
+    {
+        cout << "_";
+    }
+    cout<<endl<<endl;
+}
+
+
+bool isMatch(const string &a, const string &b)
+{
+    if (a.size() != b.size())
+    {
+        return false;
+    }
+    for (size_t i = 0; i < a.size(); ++i)
+    {
+        if (a[i] != b[i])
+            return false;
+    }
+    return true;
+}
+
+bool containsSubstring(const string &text, const string &pattern)
+{
+    size_t n = text.size();
+    size_t m = pattern.size();
+
+    for (size_t i = 0; i <= n - m; ++i)
+        {
+        bool match = true;
+        for (size_t j = 0; j < m; ++j)
+        {
+            if (text[i + j] != pattern[j])
+            {
+                match = false;
+                break;
+            }
+        }
+        if (match)
+            return true;
+    }
+    return false;
+}
+
+
+int findvillage()
+{
+    village vill[100];
+    ifstream infile("VILLAGES.txt");
+    string villages[100];
+    int villageCount = 0;
+
+    if (!infile.is_open())
+    {
+        cout << "Error opening file for reading!" << endl;
+        return -1;
+    }
+
+    while (villageCount < 100 && infile.peek() != EOF)
+    {
+        vill[villageCount].read_from_filev(infile);
+        if (vill[villageCount].villname.empty())
+            break;
+        villages[villageCount] = vill[villageCount].villname;
+        villageCount++;
+    }
+    infile.close();
+
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    while (true)
+    {
+        string input;
+        cout << "ENTER THE FULL NAME OF VILLAGE : ";
+        getline(cin, input);
+
+        if (input.empty())
+        {
+            cout << "Input cannot be empty. Please try again.\n";
+            continue;
+        }
+
+        bool found = false;
+        for (int i = 0; i < villageCount; ++i)
+        {
+            if (isMatch(villages[i], input))
+            {
+                cout << "VILLAGE FOUND : " << villages[i] << endl;
+                found = true;
+                return i+1;
+                break;
+            }
+        }
+
+        if (found)
+            break;
+
+        cout << "VILLAGE NOT FOUND! \n\nSUGGESTIONS:\n\n";
+        bool suggestionFound = false;
+
+        for (int i = 0; i < villageCount; ++i)
+        {
+            if (containsSubstring(villages[i], input))
+            {
+                cout << "did you mean:- " << villages[i] << endl<<endl;
+                suggestionFound = true;
+            }
+        }
+
+        if (!suggestionFound)
+        {
+            cout << "NO SIMILAR VILLAGE FOUND.\n";
+        }
+
+        cout << "PLESE TRY AGAIN.\n\n";
+    }
+}
+
+
+bool isMatch1(const string &a, const string &b)
+{
+    return a == b;
+}
+
+void newuser()
+{
+    farm farmers;
+    ofstream outfile("FARMERS.txt", ios::app);
+
+    if (!outfile.is_open())
+    {
+        cout << "Error opening file for writing!" << endl;
+        return;
+    }
+
+    cout << "ENTER YOUR NAME : ";
+    cin >> farmers.fname;
+    cout << "ENTER NEW PASSWORD : ";
+    cin >> farmers.fpass;
+
+    farmers.write_to_filex(outfile);
+    outfile.close();
+
+    cout << "NEW USER ADDED SUCCESSFULLY!\n";
+}
+
+string maskPasswordInput()
+{
+    string password;
+    char ch;
+
+    while ((ch = _getch()) != '\r') // '\r' is Enter key
+    {
+        if (ch == '\b') // Backspace key
+        {
+            if (!password.empty())
+            {
+                password.pop_back();
+                cout << "\b \b"; // Erase the last asterisk
+            }
+        }
+        else
+        {
+            password.push_back(ch);
+            cout << '*'; // Print asterisk for each character
+        }
+    }
+    cout << endl;
+    return password;
+}
+
+void forgot_password(const string &username)
+{
+    string newPassword;
+    farm farmers[100];
+    ifstream infile("FARMERS.txt");
+    ofstream tempfile("TEMP.txt");
+
+    if (!infile.is_open() || !tempfile.is_open())
+    {
+        cout << "Error opening files!" << endl;
+        return;
+    }
+
+    bool userFound = false;
+    int farmerCount = 0;
+
+    while (farmerCount < 100 && infile.peek() != EOF)
+    {
+        farmers[farmerCount].read_from_filex(infile);
+
+        if (farmers[farmerCount].fname == username)
+        {
+            userFound = true;
+            cout << "ENTER NEW PASSWORD: ";
+            newPassword = maskPasswordInput();
+            farmers[farmerCount].fpass = newPassword;
+        }
+
+        farmers[farmerCount].write_to_filex(tempfile);
+        farmerCount++;
+    }
+
+    infile.close();
+    tempfile.close();
+
+    if (userFound)
+    {
+        remove("FARMERS.txt");
+        rename("TEMP.txt", "FARMERS.txt");
+        cout << "PASSWORD CHANGED SUCCESSFULLY!\n";
+    }
+    else
+    {
+        remove("TEMP.txt");
+        cout << "User not found!" << endl;
+    }
+}
+
+string login()
+{
+    string pass, farname;
+    farm farmers[100];
+    ifstream infile("FARMERS.txt");
+
+    if (!infile.is_open())
+    {
+        cout << "Error opening file for reading!" << endl;
+        return "x";
+    }
+
+    cout << "ENTER YOUR NAME : ";
+    cin >> farname;
+
+    int farmerCount = 0;
+    bool userFound = false;
+
+    while (farmerCount < 100 && infile.peek() != EOF)
+    {
+        farmers[farmerCount].read_from_filex(infile);
+        if (farmers[farmerCount].fname.empty())
+            break;
+
+        if (isMatch1(farmers[farmerCount].fname, farname))
+        {
+            userFound = true;
+            int attempts = 0;
+
+            while (attempts < 3)
+            {
+                cout << "ENTER PASSWORD : ";
+                pass = maskPasswordInput();
+
+                if (isMatch1(pass, farmers[farmerCount].fpass))
+                {
+                    welcome(farmers[farmerCount].fname);
+                    return farmers[farmerCount].fname;
+                }
+                else
+                {
+                    attempts++;
+                    if (attempts < 3)
+                    {
+                        cout << "WRONG PASSWORD! ATTEMPTS LEFT: " << (3 - attempts) << endl;
+                        cout << "1. TRY AGAIN\n2. FORGOT PASSWORD\nCHOOSE AN OPTION: ";
+                        int choice;
+                        cin >> choice;
+
+                        if (choice == 2)
+                        {
+                            forgot_password(farname);
+                            return "x";
+                        }
+                    }
+                }
+            }
+
+            cout << "TOO MANY ATTEMPTS! ACCESS DENIED.\n";
+            return "x";
+        }
+        farmerCount++;
+    }
+
+    infile.close();
+
+    if (!userFound)
+    {
+        cout << "User not found! \nPlease create a new account.\n";
+        newuser();
+        return "x";
+    }
+
+    return "x";
+}
+
+int findtruck(int factid,string farmername,int villid)
+{
+    trucks tru[100];
+    ifstream infile;
+    string filename = "TRUCKS.txt";
+
+    infile.open(filename);
+    if (!infile)
+    {
+
+        cout << "Error opening file for reading!" << endl;
+        return -1;
+    }
+
+    cout << "\nTRUCKS AVALABLE ARE :\n\n";
+    for (int i = 0; i < 56; i++)
+    {
+        tru[i].read_from_filet(infile);
+            if(tru[i].factiid==factid)
+            {
+                cout << "TRUCK ID : " << tru[i].truckid<< endl;
+                cout << "DRIVER NAME : " << tru[i].driver<< endl;
+                cout << "TRUCK NUMBER : KA 22 " << tru[i].truckno<< endl;
+                cout << "LOAD CAPACITY :" << tru[i].load<< endl;
+                cout << "CONTACT NUMBER :" << tru[i].tcontact<< endl;
+                cout << "STATUS :" << tru[i].status<< endl;
+                cout << "FACTORY ID :" << tru[i].factiid<< endl<<endl;
+            }
+    }
+    infile.close();
+
+    int id;
+    cout<<"CHOICE ONE TRUCK!\nENTER TRUCK ID:";
+    cin>>id;
+
+    string src;
+
+    village vill;
+    ifstream infile2("VILLAGES.txt");
+    string villages[100];
+    int villageCount = 0;
+
+    if (!infile2.is_open())
+    {
+        cout << "Error opening file for reading!" << endl;
+        return -1;
+    }
+    for(int i=0;i<villid;i++)
+    {
+        vill.read_from_filev(infile2);
+        src=vill.villname;
+    }
+    infile2.close();
+
+    factory fact[50];
+    ifstream infile5;
+    string filename5 = "FACTORIES.txt";
+
+    string dest;
+    infile5.open(filename5);
+    if (!infile5)
+    {
+
+        cout << "Error opening file for reading!" << endl;
+        return -1;
+    }
+
+    for (int i = 0; i < factid-100; i++)
+    {
+        fact[i].read_from_filef(infile5);
+            dest=fact[i].taluka;
+
+    }
+    infile5.close();
+
+    dist matrix[50];
+    ofstream outfile10;
+    ifstream infile10;
+    string filename10 = "ddd.txt";
+    infile10.open(filename10);
+    if (!infile10)
+    {
+
+        cout << "Error opening file for reading!" << endl;
+        return -1;
+    }
+
+    for (int i = 0; i < villid; i++)
+    {
+        matrix[i].read_from_filed(infile10);
+    }
+
+    infile10.close();
+
+    int distan=matrix[villid+1].dis[factid-101];
+
+
+    truckreq trureq;
+    ifstream infile3;
+    ofstream outfile3;
+    string filename3 = "TRUCKREQUEST.txt";
+    outfile3.open(filename3,ios::app);
+    if (!outfile3.is_open())
+    {
+        cout << "Error opening file for writing!" << endl;
+        return 0;
+    }
+    trureq.tid=id;
+    trureq.farmername=farmername;
+    trureq.src=src;
+    trureq.dest=dest;
+    trureq.distance=distan;
+
+    trureq.write_to_filetru(outfile3);
+    outfile3.close();
+
+
+    return 0;
+}
+int allfactories()
+{
+    factory fact[50];
+    ifstream infile;
+    string filename = "FACTORIES.txt";
+
+
+    infile.open(filename);
+    if (!infile)
+    {
+
+        cout << "Error opening file for reading!" << endl;
+        return -1;
+    }
+
+    for (int i = 0; i < 26; i++)
+    {
+        fact[i].read_from_filef(infile);
+
+            cout << "FACTORY ID :" << fact[i].factid << endl;
+            cout << "FACTORY NAME : " << fact[i].factname << endl;
+            cout << "TALUKA :" << fact[i].taluka << endl;
+            cout << "ADDRESS : " << fact[i].address << endl;
+            cout << "CONTACT : " << fact[i].contact << endl<<endl;
+
+
+    }
+    infile.close();
+}
+
+int findfactory(int x,string farmername)
+{
+    dist matrix[50];
+    ofstream outfile;
+    ifstream infile;
+    string filename = "ddd.txt";
+    infile.open(filename);
+    if (!infile)
+    {
+
+        cout << "Error opening file for reading!" << endl;
+        return -1;
+    }
+
+    for (int i = 1; i <= x; i++)
+    {
+        matrix[i].read_from_filed(infile);
+    }
+
+    infile.close();
+    vector<int>temp;
+
+
+    for(int i=1;i<=26;i++)
+    {
+        temp.push_back(matrix[x].dis[i]);
+    }
+
+
+    int n = temp.size();
+    int smallest=1,second;
+    for(int i=2;i<=n;i++)
+    {
+
+        if(temp[i]<temp[smallest])
+        {
+            second=smallest;
+            smallest=i;
+        }
+
+        if(temp[i]>temp[smallest]&&temp[i]<temp[second])
+        {
+            second=i;
+        }
+
+    }
+
+    factory fact[50];
+    ifstream infile1;
+    string filename1 = "FACTORIES.txt";
+    int C = 0;
+
+
+    infile1.open(filename1);
+    if (!infile1) {
+        cout << "Error opening file for reading!" << endl;
+        return -1;
+    }
+
+    cout << "\nCLOSEST FACTORIES FROM YOUR VILLAGE ARE :\n\n";
+    for (int i = 0; i < 50; i++)
+        {
+
+            if (C >= 2)
+            {
+
+                break;
+
+            }
+
+        fact[i].read_from_filef(infile1);
+        if (fact[i].factid == (smallest + 100))
+        {
+
+            cout << "FACTORY ID :" << fact[i].factid << endl;
+            cout << "FACTORY NAME : " << fact[i].factname << endl;
+            cout << "TALUKA :" << fact[i].taluka << endl;
+            cout << "ADDRESS : " << fact[i].address << endl;
+            cout << "CONTACT : " << fact[i].contact << endl;
+            cout << "DISTANCE FROM YOU :"<< temp[smallest] <<"KM ONLY"<<endl<<endl;
+            C++;
+
+        }
+
+        else if(fact[i].factid == (second + 100))
+        {
+
+            cout << "FACTORY ID :" << fact[i].factid << endl;
+            cout << "FACTORY NAME : " << fact[i].factname << endl;
+            cout << "TALUKA :" << fact[i].taluka << endl;
+            cout << "ADDRESS : " << fact[i].address << endl;
+            cout << "CONTACT : " << fact[i].contact << endl;
+            cout << "DISTANCE FROM YOU :"<< temp[second] <<"KM ONLY"<<endl<<endl;
+            C++;
+
+        }
+
+    }
+    infile1.close();
+    int id;
+    cout<<"CHOICE ONE FACTORY!\nENTER FACTORY ID :";
+    cin>>id;
+
+    int weight;
+    cout<<"ENTER APPROX WEIGHT :";
+    cin>>weight;
+
+
+    factoryrequest request;
+    ofstream outfile3;
+    string filename3 = "REQUEST.txt";
+    outfile3.open(filename3,ios::app);
+    if (!outfile3.is_open())
+    {
+        cout << "Error opening file for writing!" << endl;
+        return 0;
+    }
+    request.fid=id;
+    request.factname=fact[id-101].factname;
+    request.farmername=farmername;
+    request.weight=weight;
+    request.cost=(currentcost*weight);
+    request.status="waiting";
+
+
+    request.write_to_filer(outfile3);
+    outfile3.close();
+
+
+    return id;
+
+
+}
+
+
+void farmer()
+{
+    int choice;
+    cout << "\n1.NEW USER \n2.EXISTING ACCOUNT \n\nENTER CHOICE : ";
+    cin >> choice;
+
+    switch (choice)
+    {
+        case 1: newuser();
+        break;
+        case 2:
+            break;
+        default:
+            cout << "Invalid choice.\n";
+            return;
+    }
+    logintheme();
+    string farmername=login();
+    cout<<"1.TO FIND CLOSEST SUGAR FACTORY\n2.ALL SUGAR FACTORIES\n3.EXTT\n\nENTER CHOICE:";
+    int choice1;
+    cin>>choice1;
+    switch(choice1)
+    {
+        case 1:
+
+            {
+            int x=findvillage();
+
+            int y=findfactory(x,farmername);
+
+            findtruck(y,farmername,x);
+            }
+        break;
+        case 2:allfactories();
+        break;
+        case 3:return;
+        break;
+        default:
+            cout << "Invalid choice.\n";
+            return;
+    }
+}
+
+string loginD()
+{
+    string pass, driver;
+    driverpass dpass[100];
+    ifstream infile("DRIVERPASSWORD.txt");
+
+    if (!infile.is_open())
+    {
+        cout << "Error opening file for reading!" << endl;
+        return 0;
+    }
+
+    cout << "ENTER YOUR NAME : ";
+    cin >> driver;
+
+    int dCount = 0;
+    bool userFound = false;
+
+    while (dCount < 100 && infile.peek() != EOF)
+    {
+        dpass[dCount].read_from_filedpass(infile);
+        if (dpass[dCount].dname.empty())
+            break;
+
+        if (isMatch(dpass[dCount].dname, driver))
+        {
+            userFound = true;
+            cout << "ENTER PASSWORD : ";
+            cin >> pass;
+
+            while (!isMatch(pass, dpass[dCount].dpass))
+            {
+                cout << "WRONG PASSWORD !\n TRY AGAIN : ";
+                cin >> pass;
+            }
+
+            welcome(dpass[dCount].dname);
+            return dpass[dCount].dname;
+            break;
+        }
+        dCount++;
+    }
+
+    infile.close();
+
+    if (!userFound)
+    {
+        cout << "User not found! \nPlease create a new account.\n";
+        return "x";
+    }
+
+    return "x";
+}
+
+
+void trucktor() {
+    string driverName = loginD();
+    // Additional functionality for trucks can be added here
+}
+
+
+int main()
+{
+    welcome("");
+    int choice;
+    cout << "1.FARMER \n2.TEAM FACTORY \n3.EXIT\n\nENTER YOUR CHOICE : ";
+    cin >> choice;
+
+
+    switch (choice)
+    {
+        case 1:
+            farmer();
+            break;
+        case 2:
+            cout << "Factory functionality coming soon!\n";
+            break;
+        case 3:trucktor();
+        break;
+        default:
+            cout << "Enter a valid choice.\n";
+    }
+    return 0;
+
+}
+    </p>
+</section>
 <section id="projects">
     <h2>Projects</h2>
     <ul>
